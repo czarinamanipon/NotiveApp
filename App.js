@@ -1,11 +1,31 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { registerRootComponent } from 'expo';
+import * as React from 'react';
+import { StyleSheet , useState, View, Text} from 'react-native';
+import {
+  ScrollView,
+  Input,
+  IconButton,
+  Checkbox,
+  Box,
+  VStack,
+  HStack,
+  Heading,
+  Icon,
+  Center,
+  NativeBaseProvider,
+} from "native-base";
+
+
+//import {PomodoroTimer} from "./components/PomodoroTimer";
 
 export default function App() {
+  //Homepage
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+      <NativeBaseProvider>
+        <Text style={styles.title}>Notive Home</Text>
+        <Box>Hello wwwwwwwwwworld</Box>
+      </NativeBaseProvider>
     </View>
   );
 }
@@ -13,8 +33,17 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: 'white',
+  },
+  title: {
+    fontSize: 20,
+    fontWeight: 'bold',
+  },
+  separator: {
+    marginVertical: 30,
+    height: 1,
+    width: '80%',
   },
 });
