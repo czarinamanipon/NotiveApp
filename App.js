@@ -1,8 +1,10 @@
 /* Notive Productivity App */
+/* HOMEPAGE */
 
-import { registerRootComponent } from 'expo';
 import * as React from 'react';
-import { StyleSheet , useState, View, Text, ImageBackground} from 'react-native';
+import { StyleSheet , useState, View, Text, ImageBackground, TouchableOpacity} from 'react-native';
+import Header from './components/header';
+import PomodoroTimer from "./components/PomodoroTimer";
 
 /* Native Base Components*/
 import {
@@ -20,8 +22,6 @@ import {
 } from "native-base";
 import { Feather, Entypo } from "@expo/vector-icons";
 
-import PomodoroTimer from "./PomodoroTimer";
-
  /*
  REFERENCES:
  Weekday Dependency: https://www.npmjs.com/package/weekday
@@ -34,7 +34,9 @@ export default function App() {
   const weekday = require('weekday');
   
   return (
-    <ImageBackground  style= { styles.backgroundImage } source={require('../NotiveFinal/assets/homescreenbg.png')}>
+    
+    <ImageBackground  style= { styles.backgroundImage } source={require('../assets/homescreenbg.png')}>
+      <Header />
       <NativeBaseProvider>
         <Box style={styles.container} bg={{
             linearGradient: {
@@ -115,17 +117,15 @@ export const TaskList = () => {
             placeholder="Add Task"
             background={'white'}
           />
-          <IconButton
-            borderRadius="sm"
-            variant="solid"
-            icon={
-              <Icon as={Feather} name="plus" size="sm" color="warmGray.50" />
-            }
+          <TouchableOpacity
+            style={styles.button}
             onPress={() => {
               addItem(inputValue)
               setInputValue("")
             }}
-          />
+          >
+            <Entypo name="plus" size={24} color="white" />
+          </TouchableOpacity>
         </HStack>
         <VStack space={2}>
           {list.map((item, itemI) => (
@@ -218,17 +218,15 @@ export const Reminders = () => {  const instState = [
             placeholder="Add Task"
             background={'white'}
           />
-          <IconButton
-            borderRadius="sm"
-            variant="solid"
-            icon={
-              <Icon as={Feather} name="plus" size="sm" color="warmGray.50" />
-            }
+          <TouchableOpacity
+            style={styles.button}
             onPress={() => {
               addItem(inputValue)
               setInputValue("")
             }}
-          />
+          >
+            <Entypo name="plus" size={24} color="white" />
+          </TouchableOpacity>
         </HStack>
         <VStack space={2}>
           {list.map((item, itemI) => (
@@ -313,4 +311,20 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
+  button: {
+    borderRadius: 81,
+    shadowColor: '#d93838',
+    alignSelf:'center',
+    shadowColor: '#171717',
+    shadowOffset: {width: -4, height: 4},
+    shadowOpacity: 1.0,
+     shadowRadius: 3,
+    width: 100,
+    height: 25,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  buttonText:{
+    color: 'white',
+    },
 });

@@ -5,6 +5,8 @@ import Constants from 'expo-constants';
 import { FontAwesome } from '@expo/vector-icons'; 
 import { Ionicons } from '@expo/vector-icons'; 
 import { MaterialCommunityIcons } from '@expo/vector-icons'; 
+// import { createStackNavigator, createAppContainer } from 'react-navigation';
+import Notes from './Notes';
 
 let deviceHeight = Dimensions.get('window').height;
 let deviceWidth = Dimensions.get('window').width;
@@ -13,14 +15,61 @@ export default function Header() {
   return (
     <View style={styles.header}>
       <Text style={styles.title}>Notive</Text>
-      <Ionicons.Button name="checkbox-outline" size={30} color="white" backgroundColor='none' marginTop={55}> </Ionicons.Button>
-      <FontAwesome.Button name="pencil-square-o" size={30} color="white" backgroundColor='none' marginTop={55} > </FontAwesome.Button>
-      <MaterialCommunityIcons.Button name="music-box-outline" size={30} color="white" backgroundColor='none' marginTop={55}> </MaterialCommunityIcons.Button>
-      <Ionicons.Button name="person-circle-outline" size={30} color="white" backgroundColor='none' marginTop={55}></Ionicons.Button>
+      {/* Home Page/Pomodoro Timer + Tasks */}
+      <Ionicons.Button 
+            name="checkbox-outline" 
+            size={30} 
+            color="white" 
+            backgroundColor='none' 
+            marginTop={55}> 
+       </Ionicons.Button>
+
+       {/* Notes Page */}
+      <FontAwesome.Button 
+            name="pencil-square-o" 
+            size={30} color="white" 
+            backgroundColor='none' 
+            marginTop={55} > 
+            {/* onPress={() => this.props.navigation.navigate('Notes')} */}
+      </FontAwesome.Button>
+      
+      {/* Music Page */}
+      <MaterialCommunityIcons.Button 
+            name="music-box-outline" 
+            size={30} 
+            color="white" 
+            backgroundColor='none' 
+            marginTop={55}> 
+      </MaterialCommunityIcons.Button>
+      
+      {/* Music Page */}
+      <Ionicons.Button 
+            name="person-circle-outline" 
+            size={30} 
+            color="white" 
+            backgroundColor='none' 
+            marginTop={55}>
+      </Ionicons.Button>
     </View>
     
   );
 }
+
+// const AppNavigator = createStackNavigator({
+//     // Home: {
+//     //   screen: HomeScreen
+//     // },
+//     Notes: {
+//       screen: Notes
+//     }
+//   },
+//   {
+//           initialRouteName: "Home"
+//   });
+  
+// const AppContainer = createAppContainer(AppNavigator);
+
+
 
 const styles = StyleSheet.create({
     header:{
