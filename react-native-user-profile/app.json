@@ -1,0 +1,13 @@
+{
+  "name": "expo-react-native-user-profile",
+  "displayName": "expo react native user profile",
+  "expo": {
+    "name": "expo-react-native-user-profile",
+    "description": "An empty new project",
+    "slug": "expo-react-native-user-profile",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
