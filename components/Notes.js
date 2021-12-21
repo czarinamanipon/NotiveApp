@@ -69,7 +69,7 @@
    return (
     <View style = {styles.container}>
        <ScrollView > 
-          <ImageBackground  style= { styles.backgroundImage } source={require('../assets/homescreenbg.png')}>
+          <ImageBackground  style= { styles.backgroundImage } source={require('../assets/NotesGradient.png')}>
           <View style = {styles.titleContainer}>
             <Text style = {styles.notesTitle}>NOTES</Text>
           </View>
@@ -114,7 +114,7 @@
         {/* BELOW IS THE CODE FOR ADDING/EDITING A NOTE */}
         {/* MUST BE TRUE IN ORDER TO OPEN SECOND WINDOW */}
        <Modal visible={isNoteModalOpen}> 
-          <ImageBackground  style= { styles.backgroundImage } source={require('../notiveApp/assets/NotesGradient.png')}>
+          <ImageBackground  style= { styles.backgroundImage } source={require('../assets/NotesGradient.png')}>
             <View style={styles.modalHeadingContainer}>
               {/* TITLE AND TEXT INPUT CONTAINER */}
               <Text style={styles.modalTitle}>New Note</Text>
