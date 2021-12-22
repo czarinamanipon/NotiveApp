@@ -8,6 +8,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 // import DetailsScreen from './screens/DetailsScreen';
 import Home from './Screens/Home';
 import Notes from './Screens/Notes';
+import Music from './Screens/music';
 import Profile from './Screens/Profile';
 
 import { not } from 'react-native-reanimated';
@@ -17,7 +18,9 @@ import { not } from 'react-native-reanimated';
 // const homeName = "Home";
 const homeName = "Home";
 const notesName = "Notes";
+const musicName = "Music";
 const profileName = "Profile";
+
 // const detailsName = "Details";
 // const settingsName = "Settings";
 
@@ -37,7 +40,9 @@ function Header() {
               iconName = focused ? 'checkbox' : 'checkbox-outline';
             } else if (rn === notesName) {
               iconName = focused ? 'pencil' : 'pencil-outline';
-            } else if (rn === profileName) {
+            } else if (rn === musicName) {
+              iconName = focused ? 'musical-notes' : 'musical-notes-outline';
+            }else if (rn === profileName) {
               iconName = focused ? 'person' : 'person-outline';
             }
             
@@ -55,6 +60,7 @@ function Header() {
 
         <Tab.Screen name={homeName} component={Home} />
         <Tab.Screen name={notesName} component={Notes} />
+        <Tab.Screen name={musicName} component={Music} />
         <Tab.Screen name={profileName} component={Profile} />
 
         {/* <Tab.Screen name={detailsName} component={DetailsScreen} />
