@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import { StyleSheet , useState, View, Text, ImageBackground, TouchableOpacity} from 'react-native';
-import Header from './header';
+// import Header from '../header'; *Stella commented this out
 import PomodoroTimer from "./PomodoroTimer";
 
 import {
@@ -29,11 +29,10 @@ import { Feather, Entypo } from "@expo/vector-icons";
 
 export default function Home(){
   const weekday = require('weekday');
-  const Stack = createNativeStackNavigator();
   
   return (
-    <ImageBackground  style= { styles.backgroundImage } source={require('../NotiveFinal/assets/HomescreenGradient.png')}>
-      <Header />
+    <ImageBackground  style= { styles.backgroundImage } source={require('./HomescreenGradient.png')}>
+      {/* <Header /> Stella Commented this out */}
       <NativeBaseProvider>
         <Box style={styles.container} bg={{
             linearGradient: {

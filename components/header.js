@@ -1,98 +1,68 @@
-import { StatusBar } from 'expo-status-bar';
-import React, { useState } from 'react';
-import { AppRegistry, Text, View, TouchableHighlight, TextInput, Dimensions, StyleSheet, Alert, ImageBackground, Image } from 'react-native';
-import Constants from 'expo-constants';
-import { FontAwesome } from '@expo/vector-icons'; 
-import { Ionicons } from '@expo/vector-icons'; 
-import { MaterialCommunityIcons } from '@expo/vector-icons'; 
-//import Home from './Home';
-// import Notes from './components/Notes';
+import * as React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+
+// Screens
+// import HomeScreen from './screens/HomeScreen';
+// import DetailsScreen from './screens/DetailsScreen';
+import Home from './Screens/Home';
+import Notes from './Screens/Notes';
+import Profile from './Screens/Profile';
+
+import { not } from 'react-native-reanimated';
 
 
-let deviceHeight = Dimensions.get('window').height;
-let deviceWidth = Dimensions.get('window').width;
+//Screen names
+// const homeName = "Home";
+const homeName = "Home";
+const notesName = "Notes";
+const profileName = "Profile";
+// const detailsName = "Details";
+// const settingsName = "Settings";
 
-export default function Header() {
+const Tab = createBottomTabNavigator();
+
+function Header() {
   return (
-    <View style={styles.header}>
-      <Text style={styles.title}>Notive</Text>
-      {/* Home Page/Pomodoro Timer + Tasks */}
-      <Ionicons.Button 
-            name="checkbox-outline" 
-            size={30} 
-            color="red" 
-            backgroundColor='none' 
-            marginTop={55}>
-       </Ionicons.Button>
+    <NavigationContainer independent ={true}>
+      <Tab.Navigator
+        initialRouteName={homeName}
+        screenOptions={({ route }) => ({
+          tabBarIcon: ({ focused, color, size }) => {
+            let iconName;
+            let rn = route.name;
 
-       {/* Notes Page */}
-      <FontAwesome.Button 
-            name="pencil-square-o" 
-            size={30} color="red" 
-            backgroundColor='none' 
-            marginTop={55} >
-      </FontAwesome.Button>
-      
-      {/* Music Page */}
-      <MaterialCommunityIcons.Button 
-            name="music-box-outline" 
-            size={30} 
-            color="white" 
-            backgroundColor='none' 
-            marginTop={55}> 
-      </MaterialCommunityIcons.Button>
-      
-      {/* Music Page */}
-      <Ionicons.Button 
-            name="person-circle-outline" 
-            size={30} 
-            color="white" 
-            backgroundColor='none' 
-            marginTop={55}>
-      </Ionicons.Button>
-    </View>
-    
+            if (rn === homeName) {
+              iconName = focused ? 'checkbox' : 'checkbox-outline';
+            } else if (rn === notesName) {
+              iconName = focused ? 'pencil' : 'pencil-outline';
+            } else if (rn === profileName) {
+              iconName = focused ? 'person' : 'person-outline';
+            }
+            
+            
+            // You can return any component that you like here!
+            return <Ionicons name={iconName} size={size} color={color} />;
+          },
+        })}
+        tabBarOptions={{
+          activeTintColor: 'purple',
+          inactiveTintColor: 'grey',
+          labelStyle: { paddingTop: 5, fontSize: 15,top: 100 },
+          style: { padding: 10, height: 30, position: 'absolute',  }
+        }}>
+
+        <Tab.Screen name={homeName} component={Home} />
+        <Tab.Screen name={notesName} component={Notes} />
+        <Tab.Screen name={profileName} component={Profile} />
+
+        {/* <Tab.Screen name={detailsName} component={DetailsScreen} />
+        <Tab.Screen name={settingsName} component={SettingsScreen} /> */}
+
+      </Tab.Navigator>
+    </NavigationContainer>
   );
 }
 
-// const AppNavigator = createStackNavigator({
-//     // Home: {
-//     //   screen: HomeScreen
-//     // },
-//     Notes: {
-//       screen: Notes
-//     }
-//   },
-//   {
-//           initialRouteName: "Home"
-//   });
-  
-// const AppContainer = createAppContainer(AppNavigator);
-
-
-
-const styles = StyleSheet.create({
-    header:{
-        height: .8*(deviceHeight/6),
-        width: deviceWidth,
-        flexDirection: 'row',
-        alignItems: 'center',
-        borderBottomWidth: 2,
-        borderBottomColor: 'white',
-      },
-    title:{
-        width: 2*(deviceWidth/5),
-        fontFamily: 'GillSans',
-        fontSize: 50,
-        lineHeight: .8*(deviceHeight/6),
-        color: 'white',
-        textAlign:'left',
-        margin: 10,
-      },
-    navBarIcon:{
-        alignItems: 'center',
-        justifyContent: 'center',
-        margin: 40,
-
-    }
-});
+export default Header;

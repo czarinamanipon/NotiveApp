@@ -1,4 +1,3 @@
-
 /**
  * Sources used and referenced:
  * - https://reactnative.dev/
@@ -9,6 +8,9 @@
  */
 
  import React, { useState, useCallback } from 'react';
+ import { NavigationContainer } from '@react-navigation/native';
+ import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
  import {
    ImageBackground,
    Dimensions,
@@ -25,51 +27,54 @@
   //For the dimensions of the layout 
  let deviceWidth = Dimensions.get('window').width;    
  let deviceHeight = Dimensions.get('window').height; 
+ 
 
 
- const Notes = () => {
-  //  Use State Variables
-   const [notes, setNotes] = useState([])  
-   const [listView, setListView] = useState(false)
-   const [isNoteModalOpen, setNoteModalOpen] = useState(false)
-   const [text, setText] = useState('');
-   const [selectedIndex, setSelectedIndex] = useState(null)
+    const Notes = () => {
+        //  Use State Variables
+         const [notes, setNotes] = useState([])  
+         const [listView, setListView] = useState(false)
+         const [isNoteModalOpen, setNoteModalOpen] = useState(false)
+         const [text, setText] = useState('');
+         const [selectedIndex, setSelectedIndex] = useState(null)
+      
+       
+        //  This function helps when a user wants to go back and edit their notes, the note will be updated
+         const onSaveNote = useCallback(() => { //CallBack will return a memoized version of of the callback that ony changes if the input changes
+           if (!text) {
+             return;
+           }
+       
+           let copyNotes = [...notes]
+       
+           //Each note has its own index
+           if (selectedIndex !== null) {
+             copyNotes[selectedIndex] = text
+           } else {
+             copyNotes = copyNotes.concat(text)
+           }
+       
+           setNotes(copyNotes)
+           setNoteModalOpen(false)
+           setSelectedIndex(null)
+         }, [text, notes, setNotes])
+       
+        //  Each note has its own index. If the note is pressed, a full view screen of the note will be displayed
+         const onNotePress = (index) => {
+           setSelectedIndex(index)
+           setText(notes[index])
+           setNoteModalOpen(true)
+         }
+       
+        //  let noteStyle = [styles.note] //Attributing notes to a style 
+         const textProps = listView ? { numberOfLines: 2 } : {} //If it is in list view -> limiting the number of lines to 2 
+          
 
- 
-  //  This function helps when a user wants to go back and edit their notes, the note will be updated
-   const onSaveNote = useCallback(() => { //CallBack will return a memoized version of of the callback that ony changes if the input changes
-     if (!text) {
-       return;
-     }
- 
-     let copyNotes = [...notes]
- 
-     //Each note has its own index
-     if (selectedIndex !== null) {
-       copyNotes[selectedIndex] = text
-     } else {
-       copyNotes = copyNotes.concat(text)
-     }
- 
-     setNotes(copyNotes)
-     setNoteModalOpen(false)
-     setSelectedIndex(null)
-   }, [text, notes, setNotes])
- 
-  //  Each note has its own index. If the note is pressed, a full view screen of the note will be displayed
-   const onNotePress = (index) => {
-     setSelectedIndex(index)
-     setText(notes[index])
-     setNoteModalOpen(true)
-   }
- 
-  //  let noteStyle = [styles.note] //Attributing notes to a style 
-   const textProps = listView ? { numberOfLines: 2 } : {} //If it is in list view -> limiting the number of lines to 2 
-  
    return (
+     
     <View style = {styles.container}>
        <ScrollView > 
-          <ImageBackground  style= { styles.backgroundImage } source={require('../assets/NotesGradient.png')}>
+          <ImageBackground  style= { styles.backgroundImage } source={require('./NotesGradient.png')}>
           <View style = {styles.titleContainer}>
             <Text style = {styles.notesTitle}>NOTES</Text>
           </View>
@@ -114,7 +119,7 @@
         {/* BELOW IS THE CODE FOR ADDING/EDITING A NOTE */}
         {/* MUST BE TRUE IN ORDER TO OPEN SECOND WINDOW */}
        <Modal visible={isNoteModalOpen}> 
-          <ImageBackground  style= { styles.backgroundImage } source={require('../assets/NotesGradient.png')}>
+          <ImageBackground  style= { styles.backgroundImage } source={require('../Screens/NotesGradient.png')}>
             <View style={styles.modalHeadingContainer}>
               {/* TITLE AND TEXT INPUT CONTAINER */}
               <Text style={styles.modalTitle}>New Note</Text>
@@ -148,7 +153,9 @@
        </View>
 
    );
- };
+     };
+
+
  
  const styles = StyleSheet.create({
    container:{
