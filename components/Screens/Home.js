@@ -309,7 +309,7 @@ const styles = StyleSheet.create({
   },
   button: {
     borderRadius: 81,
-    shadowColor: '#d93838',
+    shadowColor: '#171717',
     alignSelf:'center',
     shadowColor: '#b193a0',
     shadowOffset: {width: -4, height: 4},
