@@ -3,7 +3,7 @@ import { StyleSheet, Text, View } from 'react-native'
 import { Icon } from 'react-native-elements'
 import PropTypes from 'prop-types'
 
-// import { Colors } from './constants'
+// import { Colors } from '../Setting1/constants'
 
 const styles = StyleSheet.create({
   centerRow: {
@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
     fontWeight: '600',
   },
   subTitleText: {
-    color: Colors.white,
+    color: 'white',
     fontSize: 14,
     fontWeight: '400',
   },
@@ -89,7 +89,7 @@ class Nav extends Component {
               size={34}
               name="arrow-back"
               type="material-icon"
-              color={Colors.white}
+              color="white" //this was changed
               iconStyle={styles.icon}
               underlayColor="transparent"
               underlineColorAndroid="transparent"
@@ -114,7 +114,7 @@ class Nav extends Component {
               onPress={this.onPressLike}
               underlayColor="transparent"
               underlineColorAndroid="transparent"
-              color={this.state.like ? Colors.pink : Colors.white}
+              color={this.state.like ? "pink" : "white"}
               hitSlop={{ top: 15, bottom: 15, left: 15, right: 15 }}
               containerStyle={[styles.iconContainer, { marginRight: 12 }]}
             />
@@ -122,7 +122,7 @@ class Nav extends Component {
               size={32}
               type="feather"
               name="share-2"
-              color={Colors.white}
+              color= "white"
               onPress={() => null}
               iconStyle={styles.icon}
               underlayColor="transparent"

@@ -9,6 +9,7 @@ import PropTypes from 'prop-types'
 import Setting1 from './Setting1'
 import SettingOption1 from './Setting1/Options'
 
+
 const Setting1Stack = createStackNavigator()
 function SettingsStackScreen() {
   return (
@@ -18,6 +19,8 @@ function SettingsStackScreen() {
     </Setting1Stack.Navigator>
   )
 }
+
+
 
 const Tab = createBottomTabNavigator()
 

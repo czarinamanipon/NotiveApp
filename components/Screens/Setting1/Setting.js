@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { ScrollView, Switch, StyleSheet, Text, View } from 'react-native'
 import { Avatar, ListItem } from 'react-native-elements'
 import PropTypes from 'prop-types'
+import Ionicons from 'react-native-vector-icons/Ionicons';
+
 
 import BaseIcon from './Icon'
 import Chevron from './Chevron'
@@ -27,6 +29,11 @@ const styles = StyleSheet.create({
     borderWidth: 0.5,
     borderColor: '#ECECEC',
   },
+  text:{
+    fontSize:30,
+    fontFamily: 'Avenir',
+    fontColor: 'blue',
+  }
 })
 
 class SettingsScreen extends Component {
@@ -72,7 +79,7 @@ class SettingsScreen extends Component {
             <Text
               style={{
                 color: 'gray',
-                fontSize: 16,
+                fontSize: 12,
               }}
             >
               {firstEmail.email}
@@ -80,151 +87,37 @@ class SettingsScreen extends Component {
           </View>
         </View>
         <InfoText text="Account" />
+        
         <View>
-          <ListItem
-            hideChevron
-            title="Notifications"
-            containerStyle={styles.listItemContainer}
-            rightElement={
-              <Switch
-                onValueChange={this.onChangePushNotifications}
-                value={this.state.pushNotifications}
-              />
-            }
-            leftIcon={
-              <BaseIcon
-                containerStyle={{
-                  backgroundColor: '#FFADF2',
-                }}
-                icon={{
-                  type: 'material',
-                  name: 'notifications',
-                }}
-              />
-            }
-          />
-          <ListItem
-            title="Time Zone"
-            rightTitle="PST"
-            rightTitleStyle={{ fontSize: 15 }}
-            onPress={() => this.onPressSetting()}
-            containerStyle={styles.listItemContainer}
-            leftIcon={
-              <BaseIcon
-                containerStyle={{ backgroundColor: '#57DCE7' }}
-                icon={{
-                  type: 'material',
-                  name: 'place',
-                }}
-              />
-            }
-            rightIcon={<Chevron />}
-          />
-          <ListItem
-            title="Language"
-            rightTitle="English"
-            rightTitleStyle={{ fontSize: 15 }}
-            onPress={() => this.onPressSetting()}
-            containerStyle={styles.listItemContainer}
-            leftIcon={
-              <BaseIcon
-                containerStyle={{ backgroundColor: '#FEA8A1' }}
-                icon={{
-                  type: 'material',
-                  name: 'language',
-                }}
-              />
-            }
-            rightIcon={<Chevron />}
-          />
+          <Ionicons.Button name="notifications-outline" size={30} color="red" backgroundColor='none' marginTop={55}>
+            <Text style = {styles.text}> Notifications</Text>
+          </Ionicons.Button>
         </View>
+
         <View>
-          <ListItem
-            title="About Us"
-            onPress={() => this.onPressSetting()}
-            containerStyle={styles.listItemContainer}
-            leftIcon={
-              <BaseIcon
-                containerStyle={{ backgroundColor: '#A4C8F0' }}
-                icon={{
-                  type: 'ionicon',
-                  name: 'md-information-circle',
-                }}
-              />
-            }
-            rightIcon={<Chevron />}
-          />
-          <ListItem
-            title="Shared With Me"
-            onPress={() => this.onPressSetting()}
-            containerStyle={styles.listItemContainer}
-            badge={{
-              value: 4,
-              textStyle: { fontSize: 14, color: 'white' },
-            }}
-            leftIcon={
-              <BaseIcon
-                containerStyle={{ backgroundColor: '#C6C7C6' }}
-                icon={{
-                  type: 'entypo',
-                  name: 'light-bulb',
-                }}
-              />
-            }
-            rightIcon={<Chevron />}
-          />
-          <ListItem
-            title="Link Account"
-            onPress={() => this.onPressSetting()}
-            containerStyle={styles.listItemContainer}
-            leftIcon={
-              <BaseIcon
-                containerStyle={{
-                  backgroundColor: '#C47EFF',
-                }}
-                icon={{
-                  type: 'entypo',
-                  name: 'share',
-                }}
-              />
-            }
-            rightIcon={<Chevron />}
-          />
-          <ListItem
-            title="Customize Theme"
-            onPress={() => this.onPressSetting()}
-            containerStyle={styles.listItemContainer}
-            leftIcon={
-              <BaseIcon
-                containerStyle={{
-                  backgroundColor: '#FECE44',
-                }}
-                icon={{
-                  type: 'entypo',
-                  name: 'star',
-                }}
-              />
-            }
-            rightIcon={<Chevron />}
-          />
-          <ListItem
-            title="Help Center"
-            onPress={() => this.onPressSetting()}
-            containerStyle={styles.listItemContainer}
-            leftIcon={
-              <BaseIcon
-                containerStyle={{
-                  backgroundColor: '#00C001',
-                }}
-                icon={{
-                  type: 'materialicon',
-                  name: 'feedback',
-                }}
-              />
-            }
-            rightIcon={<Chevron />}
-          />
+          <Ionicons.Button name="share" size={30} color="red" backgroundColor='none' marginTop={55}>
+            <Text style = {styles.text}> Share with Me</Text>
+          </Ionicons.Button>
         </View>
+
+        <View>
+          <Ionicons.Button name="hammer" size={30} color="red" backgroundColor='none' marginTop={55}>
+            <Text style = {styles.text}> Customize Theme</Text>
+          </Ionicons.Button>
+        </View>
+
+        <View>
+          <Ionicons.Button name="link" size={30} color="red" backgroundColor='none' marginTop={55}>
+            <Text style = {styles.text}> Link Accounts</Text>
+          </Ionicons.Button>
+        </View>
+
+        <View>
+          <Ionicons.Button name="help-outline" size={30} color="red" backgroundColor='none' marginTop={55}>
+            <Text style = {styles.text}> Help Center</Text>
+          </Ionicons.Button>
+        </View>
+
       </ScrollView>
     )
   }

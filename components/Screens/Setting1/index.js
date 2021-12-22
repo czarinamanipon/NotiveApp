@@ -4,22 +4,22 @@ import { SafeAreaView } from 'react-native'
 
 import contactData from './mocks/contact.json'
 
-// import { Nav } from './Screens'
+import { Nav } from '../components'
 import Setting from './Setting'
 
 const SettingScreen = (props) => {
   props.navigation.setOptions({
     header: ({navigation}) => (
       <SafeAreaView>
-        {/* <Nav
-          title="Settings"
+        <Nav
+          title="My Account"
           navigation={navigation}
           leftIcon={{
             type: 'ionicon',
             name: 'md-list',
             size: 26,
           }}
-        /> */}
+        />
       </SafeAreaView>
     ),
   })

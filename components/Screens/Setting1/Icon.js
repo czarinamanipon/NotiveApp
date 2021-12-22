@@ -22,7 +22,7 @@ const BaseIcon = ({ containerStyle, icon }) => (
   <View style={[styles.container, containerStyle]}>
     <Icon
       size={24}
-      color="white"
+      color="red"
       type="material"
       name="notifications"
       {...icon}
